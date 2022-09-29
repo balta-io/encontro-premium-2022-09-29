@@ -69,11 +69,9 @@ public class EfReadDemos
     }
 
     [Benchmark]
-    public void ReadAllUnormalizedDapper()
+    public void ReadViewDapper()
     {
-        using (var connection = new SqlConnection(ConnectionString))
-        {
-            var data = connection.Query<StudentLectureView>(Query);
-        }
+        var conn = _context.Database.GetDbConnection();
+        var data = conn.Query<StudentLectureView>(Query);
     }
 }
